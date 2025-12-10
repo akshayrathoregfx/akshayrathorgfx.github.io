@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Akshay Rathore | Graphic Designer</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -10,15 +11,65 @@
             color: white;
             text-align: center;
             padding: 50px;
+            margin: 0;
         }
-        h1 { color: #4da6ff; }
-        p { font-size: 18px; }
+
+        h1 { 
+            color: #4da6ff; 
+            margin-bottom: 10px;
+        }
+
+        h3 { 
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        p { 
+            font-size: 18px; 
+            line-height: 25px;
+        }
+
+        /* SCROLL REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
+
 <body>
-    <h1>Akshay Rathore</h1>
-    <h3>Graphic Designer</h3>
-    <p>Social media creatives • Reels thumbnails • Banners • Posters</p>
-    <p>Portfolio under development…</p>
+
+    <div class="reveal">
+        <h1>Akshay Rathore</h1>
+        <h3>Graphic Designer</h3>
+        <p>Social media creatives • Reels thumbnails • Banners • Posters</p>
+        <p>Portfolio under development…</p>
+    </div>
+
+    <script>
+        function reveal() {
+            let reveals = document.querySelectorAll(".reveal");
+
+            reveals.forEach(el => {
+                let windowHeight = window.innerHeight;
+                let elementTop = el.getBoundingClientRect().top;
+                let elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add("active");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+
 </body>
 </html>
